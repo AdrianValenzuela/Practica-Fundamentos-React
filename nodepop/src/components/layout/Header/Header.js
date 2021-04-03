@@ -16,7 +16,7 @@ function Header({isLogged}) {
             </div>
             <nav>
                 <Button className={'button is-primary is-rounded'} text={'New Advert'} />
-                <AuthButton isLogged={true} />
+                <AuthButton isLogged={false} />
             </nav>
         </header>
     );

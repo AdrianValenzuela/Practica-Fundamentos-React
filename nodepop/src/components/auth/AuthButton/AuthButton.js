@@ -6,10 +6,24 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../shared';
 
 function AuthButton({isLogged}) {
+
+    const isLoggedProps = {
+        text: 'Log out'
+    };
+
+    const notLoggedProps = {
+        // as: Link,
+        // to: '/login',
+        text: 'Log in'
+    }
+
+    const props = isLogged ? isLoggedProps : notLoggedProps;
+
+
     if (isLogged) {
-        return <Button className={'button is-danger is-rounded'} text={'Log out'} />
+        return <Button className={'button is-danger is-rounded'} {...props} />
     } else {
-        return <Button className={'button is-rounded'} text={'Log in'} />
+        return <Button className={'button is-info is-rounded'} {...props} />
     }
 }
 
