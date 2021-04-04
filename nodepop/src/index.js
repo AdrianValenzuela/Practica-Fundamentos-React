@@ -1,6 +1,7 @@
 // libraries imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // local imports
 import './index.css';
@@ -12,6 +13,8 @@ const accessToken = storage.get('token');
 configureClient(accessToken);
 
 ReactDOM.render(
-  <App isInitiallyLogged={!!accessToken} />,
+  <Router>
+    <App isInitiallyLogged={!!accessToken} />
+  </Router>,
   document.getElementById('root')
 );

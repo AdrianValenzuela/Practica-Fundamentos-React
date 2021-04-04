@@ -1,6 +1,5 @@
 // libraries imports
 import React from 'react';
-import classNames from 'classnames';
 
 // local imports
 import './Button.css';

@@ -1,11 +1,12 @@
 //libraries imports
 import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 // local imports
-import logo from './logo.svg';
 import './App.css';
-import { Layout } from './components/layout';
+import { AdvertsPage } from './components/adverts';
 import { LoginPage } from './components/auth';
+import { PageNotFound } from './components/layout';
 
 function App({ isInitiallyLogged }) {
 
@@ -20,9 +21,20 @@ function App({ isInitiallyLogged }) {
 
   return (
     <div className="App">
-      {/* <Layout></Layout> */}
-      {/* <LoginPage onLogin={handleLogin}/> */}
-      {isLogged ? <Layout isLogged={isLogged} onLogout={handleLogout}/> : <LoginPage onLogin={handleLogin}/>}
+      <Switch>
+        {/* <Route path='/advert/:id' component={}></Route> */}
+        {/* <Route path='/advert' component={}></Route> */}
+        <Route path='/login'>
+          { isLogged ? <Redirect to='/' /> : <LoginPage onLogin={handleLogin} /> }
+        </Route>
+        <Route exact path='/'>
+          <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route path='/404' component={PageNotFound}/>
+        <Route>
+          <Redirect to='/404' />
+        </Route>
+      </Switch>
     </div>
   );
 }

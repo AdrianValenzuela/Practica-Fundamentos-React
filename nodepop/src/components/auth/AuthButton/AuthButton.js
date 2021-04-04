@@ -18,8 +18,6 @@ function AuthButton({ isLogged, onLogout }) {
     };
 
     const notLoggedProps = {
-        // as: Link,
-        // to: '/login',
         text: 'Log in'
     }
 
@@ -29,7 +27,11 @@ function AuthButton({ isLogged, onLogout }) {
     if (isLogged) {
         return <Button className={'button is-danger is-rounded'} {...props} />
     } else {
-        return <Button className={'button is-info is-rounded'} {...props} />
+        return (
+            <Link to='/login'>
+                <Button className={'button is-info is-rounded'} {...props} />
+            </Link>
+        );
     }
 }
 

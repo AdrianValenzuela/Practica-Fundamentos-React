@@ -4,16 +4,14 @@ import React from 'react';
 // local imports
 import Header from '../Header';
 import Footer from '../Footer';
-import { LoginPage } from '../../auth';
 import './Layout.css';
 
-function Layout({ ...props }) {
+function Layout({ children, ...props }) {
     return (
         <div className='layout'>
             <Header {...props}/>
             <main className='content'>
-                <h1>title</h1>
-                <p>content</p>
+                {children}
             </main>
             <Footer />
         </div>

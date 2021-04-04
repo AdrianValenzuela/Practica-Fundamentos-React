@@ -11,9 +11,11 @@ import { AuthButton } from '../../auth';
 function Header({ isLogged, onLogout }) {
     return (
         <header className='header'>
-            <div className='logo'>
-                <Icon width="130" height="32" />                
-            </div>
+            <Link to='/'>
+                <div className='logo'>
+                    <Icon width="130" height="32" />                
+                </div>
+            </Link>
             <nav>
                 <Button className={'button is-primary is-rounded'} text={'New Advert'} />
                 <AuthButton isLogged={isLogged} onLogout={onLogout}/>
