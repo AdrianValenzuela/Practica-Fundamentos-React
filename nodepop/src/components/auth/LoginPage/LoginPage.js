@@ -10,13 +10,19 @@ import { ErrorMessage } from '../../shared';
 
 function LoginPage({onLogin}) {
 
+    const [isLoading, setIsLoading] = React.useState(false);
+    
     const [error, setError] = React.useState(null);
     const handleSubmit = async credentials => {
         try {
+            setIsLoading(true);
             await authService.login(credentials);
             onLogin();
         } catch (error) {
             setError(error.message);
+            setHiddenError(false); // ya que si lo cerramos una vez tiene que volver a salir en caso de otro error
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -28,7 +34,7 @@ function LoginPage({onLogin}) {
     return (
         <div className='loginPage'>
             <Icon width="170" height="42" />
-            <LoginForm onSubmit={handleSubmit}/>
+            <LoginForm onSubmit={handleSubmit} isLoading={isLoading}/>
             {error && <ErrorMessage className={hiddenError && 'hidden'} message={error} onClick={handleError}/>}
         </div>
     );
