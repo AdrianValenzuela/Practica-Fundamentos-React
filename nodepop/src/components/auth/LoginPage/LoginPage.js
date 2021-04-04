@@ -3,12 +3,13 @@ import React from 'react';
 
 // local imports
 import LoginForm from './LoginForm.js';
+import { ReactComponent as Icon } from '../../../assets/header-logo.svg';
 import './LoginPage.css';
 
 function LoginPage() {
     return (
         <div className='loginPage'>
-            <h1 className='title'>Log in to Nodepop</h1>
+            <Icon width="170" height="42" />
             <LoginForm />
         </div>
     );

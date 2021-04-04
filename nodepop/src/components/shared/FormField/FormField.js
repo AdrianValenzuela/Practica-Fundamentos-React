@@ -4,17 +4,8 @@ import classNames from 'classnames';
 
 function FormField({className, inputType, placeholder}) {
     return (
-        // <input 
-        //     class="input is-primary" 
-        //     type="text" 
-        //     placeholder="Primary input"
-        // />
         <input
-            className = {
-                classNames(
-                    className
-                )
-            }
+            className = {className}
             type = {inputType}
             placeholder = {placeholder}
         />
