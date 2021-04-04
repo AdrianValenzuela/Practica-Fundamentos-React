@@ -2,12 +2,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function FormField({className, inputType, placeholder}) {
+function FormField({className, ...props}) {
     return (
         <input
             className = {className}
-            type = {inputType}
-            placeholder = {placeholder}
+            {...props}
         />
     );
 }
