@@ -1,5 +1,6 @@
 // libraries imports
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // local imports
 import { Button, FormField } from '../../shared';
@@ -47,5 +48,14 @@ function LoginForm({ onSubmit, isLoading }) {
         </form>
     );
 }
+
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool
+};
+
+LoginForm.defaultProps = {
+    isLoading: false
+};
 
 export default LoginForm;

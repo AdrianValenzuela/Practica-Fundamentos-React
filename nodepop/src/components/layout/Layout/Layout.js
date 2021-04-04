@@ -7,7 +7,7 @@ import Footer from '../Footer';
 import { LoginPage } from '../../auth';
 import './Layout.css';
 
-function Layout({...props}) {
+function Layout({ ...props }) {
     return (
         <div className='layout'>
             <Header {...props}/>

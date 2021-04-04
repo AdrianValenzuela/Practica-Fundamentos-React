@@ -8,7 +8,7 @@ import './Header.css';
 import { Button } from '../../shared';
 import { AuthButton } from '../../auth';
 
-function Header({isLogged}) {
+function Header({ isLogged, onLogout }) {
     return (
         <header className='header'>
             <div className='logo'>
@@ -16,7 +16,7 @@ function Header({isLogged}) {
             </div>
             <nav>
                 <Button className={'button is-primary is-rounded'} text={'New Advert'} />
-                <AuthButton isLogged={isLogged} />
+                <AuthButton isLogged={isLogged} onLogout={onLogout}/>
             </nav>
         </header>
     );

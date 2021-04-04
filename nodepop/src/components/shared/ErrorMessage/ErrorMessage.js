@@ -5,14 +5,9 @@ import classNames from 'classnames';
 // local imports
 import './ErrorMessage.css';
 
-function ErrorMessage({className, message, onClick}) {
+function ErrorMessage({ message, onClick }) {
     return (
-        <div 
-            className={classNames(
-                'notification is-danger is-light',
-                className
-            )}
-        >
+        <div className={'notification is-danger is-light'}>
             <button className='delete' onClick={onClick}/>
             {message}
         </div>

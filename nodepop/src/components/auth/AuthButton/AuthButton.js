@@ -4,10 +4,16 @@ import { Link } from 'react-router-dom';
 
 // local imports
 import { Button } from '../../shared';
+import authService from '../../../api/auth.js';
 
-function AuthButton({isLogged}) {
+function AuthButton({ isLogged, onLogout }) {
+
+    const handleLogoutClick = () => {
+        authService.logout().then(onLogout);
+    };
 
     const isLoggedProps = {
+        onClick: handleLogoutClick,
         text: 'Log out'
     };
 
