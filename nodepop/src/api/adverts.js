@@ -1,7 +1,7 @@
 // local imports
 import client from './client.js';
 
-const advertsBaseURL = '/api/v1/adverts';
+const advertsBaseURL = '/v1/adverts';
 
 const advertsService = {
     getAdverts: function() {

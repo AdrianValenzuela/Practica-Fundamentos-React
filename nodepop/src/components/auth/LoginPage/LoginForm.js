@@ -4,7 +4,7 @@ import React from 'react';
 // local imports
 import { Button, FormField } from '../../shared';
 
-function LoginForm() {
+function LoginForm({onSubmit}) {
  
     const [credentials, setCredentials] = React.useState({ email: '', password: '' });
     const handleFormFieldChange = event => {
@@ -16,8 +16,13 @@ function LoginForm() {
         });
     };
 
+    const handleSubmitLoginForm = event => {
+        event.preventDefault();
+        onSubmit(credentials);
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmitLoginForm}>
             <FormField 
                 className={'input is-primary'} 
                 type={'text'} 
@@ -36,7 +41,8 @@ function LoginForm() {
             />
             <Button 
                 className={'button is-primary is-rounded'} 
-                text={'Log in'} 
+                text={'Log in'}
+                disabled={!credentials.email || !credentials.password}
             />
         </form>
     );

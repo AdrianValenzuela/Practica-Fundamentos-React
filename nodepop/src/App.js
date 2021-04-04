@@ -1,27 +1,26 @@
+//libraries imports
+import React from 'react';
+
+// local imports
 import logo from './logo.svg';
 import './App.css';
 import { ErrorMessage } from './components/shared/index.js'
 import { Layout } from './components/layout';
+import { LoginPage } from './components/auth';
 
 function App() {
+
+  const [isLogged, setIsLogged] = React.useState(false);
+  const handleLogin = () => {
+    setIsLogged(true);
+  };
+
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       {/* <ErrorMessage message={"hola"} /> */}
-      <Layout></Layout>
+      {/* <Layout></Layout> */}
+      {/* <LoginPage onLogin={handleLogin}/> */}
+      {isLogged ? <Layout isLogged={isLogged}/> : <LoginPage onLogin={handleLogin}/>}
     </div>
   );
 }

@@ -5,14 +5,11 @@ import classNames from 'classnames';
 // local imports
 import './Button.css';
 
-function Button({className, text}) {
+function Button({className, text, ...props}) {
     return (
         <button 
-            className={
-                classNames(
-                    className
-                )
-            }
+            className={className}
+            {...props}
         >
             {text}
         </button>
