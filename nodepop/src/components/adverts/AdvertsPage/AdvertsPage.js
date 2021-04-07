@@ -4,6 +4,7 @@ import React from 'react';
 // local imports
 import advertsService from '../../../api/adverts.js'; 
 import { Layout } from '../../layout';
+import { FiltersForm } from '../../filters';
 import { Button } from '../../shared';
 import AdvertsList from './AdvertsList.js';
 
@@ -32,6 +33,7 @@ function AdvertsPage({ ...props }) {
     return (
         <div>
             <Layout {...props} >
+                <FiltersForm />
                 <div className='ads'>
                     { adverts.length ? <AdvertsList adverts={adverts} />: <EmptyList /> }
                 </div>                

@@ -45,6 +45,7 @@ function LoginForm({ onSubmit, isLoading }) {
                 name={'remember'}
                 text={'Remember me'}
                 disabled={!credentials.email || !credentials.password}
+                checked={credentials.remember}
                 onChange={handleFormFieldChange}
             />
             <Button 
