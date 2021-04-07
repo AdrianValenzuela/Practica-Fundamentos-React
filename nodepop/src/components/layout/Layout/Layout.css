@@ -1,3 +1,5 @@
 .content {
     min-height: calc(100vh - 128px);
+    width: 1065px;
+    margin-left: 350px;
 }
