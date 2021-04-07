@@ -27,7 +27,7 @@ function AdvertsPage({ ...props }) {
     return (
         <div>
             <Layout {...props} >
-                <div>
+                <div className='ads'>
                     { adverts.length ? <AdvertsList adverts={adverts} />: <EmptyList /> }
                 </div>                
             </Layout>

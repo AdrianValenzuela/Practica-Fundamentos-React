@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 // local imports
 import Advert from './Advert.js';
+import './AdvertsList.css';
 
 function AdvertsList({ adverts }) {
 
