@@ -2,8 +2,10 @@
 import React from 'react';
 
 // local imports
+import advertsService from '../../../api/adverts.js'; 
 import { Layout } from '../../layout';
 import { Button } from '../../shared';
+import AdvertsList from './AdvertsList.js';
 
 function EmptyList() {
     return (
@@ -16,10 +18,18 @@ function EmptyList() {
 
 function AdvertsPage({ ...props }) {
 
+    const [adverts, setAdverts] = React.useState([]);
+
+    React.useEffect(() => {
+        advertsService.getAdverts().then(setAdverts);
+    }, []);
+
     return (
         <div>
             <Layout {...props} >
-                { <EmptyList /> }
+                <div>
+                    { adverts.length ? <AdvertsList adverts={adverts} />: <EmptyList /> }
+                </div>                
             </Layout>
         </div>
     );
