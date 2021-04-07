@@ -21,7 +21,12 @@ function AdvertsPage({ ...props }) {
     const [adverts, setAdverts] = React.useState([]);
 
     React.useEffect(() => {
-        advertsService.getAdverts().then(setAdverts);
+        advertsService.getAdverts().then(adverts => {
+            // ordenamos de más nuevo a más viejo
+            return adverts.sort((advert1, advert2) => {
+                return advert1.createdAt > advert2.createdAt ? -1 : 0;
+            });
+        }).then(setAdverts);
     }, []);
 
     return (
