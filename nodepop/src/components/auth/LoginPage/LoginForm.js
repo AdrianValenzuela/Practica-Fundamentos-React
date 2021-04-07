@@ -3,16 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // local imports
-import { Button, FormField } from '../../shared';
+import { Button, FormField, Checkbox } from '../../shared';
 
 function LoginForm({ onSubmit, isLoading }) {
  
-    const [credentials, setCredentials] = React.useState({ email: '', password: '' });
+    const [credentials, setCredentials] = React.useState({ email: '', password: '', remember: false });
     const handleFormFieldChange = event => {
         setCredentials(credentials => {
             return {
                 ...credentials,
-                [event.target.name]: event.target.value
+                [event.target.name]: event.target.name === 'remember' ? event.target.checked : event.target.value
             };
         });
     };
@@ -38,6 +38,13 @@ function LoginForm({ onSubmit, isLoading }) {
                 name={'password'}
                 placeholder={'password'}
                 value={credentials.password}
+                onChange={handleFormFieldChange}
+            />
+            <Checkbox 
+                className={'checkbox'}
+                name={'remember'}
+                text={'Remember me'}
+                disabled={!credentials.email || !credentials.password}
                 onChange={handleFormFieldChange}
             />
             <Button 

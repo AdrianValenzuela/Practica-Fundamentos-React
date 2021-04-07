@@ -7,3 +7,12 @@
 input, button {
     margin-top: 10px;
 }
+
+.checkbox {
+    display: block;
+    width: 125px;
+}
+
+.checkbox input {
+    margin-right: 5px;
+}

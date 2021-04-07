@@ -6,7 +6,10 @@ const authService = {
     login: function(credentials) {
         return client.post('/auth/login', credentials).then(({ accessToken }) => {
             configureClient(accessToken);
-            storage.set('token', accessToken);
+
+            if (credentials.remember) {
+                storage.set('token', accessToken);
+            }            
         });
     },
 
