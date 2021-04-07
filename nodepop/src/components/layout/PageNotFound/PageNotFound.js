@@ -2,13 +2,16 @@
 import React from 'react'
 
 // local imports
+import Layout from '../Layout';
 import './PageNotFound.css';
 
 function PageNotFound() {
     return (
-        <div className='notFound'>
+        <Layout>
+            <div className='notFound'>
             404 | Page not found
-        </div>
+            </div>
+        </Layout>
     );
 }
 
