@@ -2,7 +2,8 @@
 import React from 'react';
 
 // local imports
-import { FormField, Checkbox } from '../../shared';
+import { FormField, Checkbox, Button } from '../../shared';
+import './FiltersForm.css';
 
 function FiltersForm() {
 
@@ -31,9 +32,9 @@ function FiltersForm() {
     }
 
     return (
-        <div className='filters'>
+        <form className='filters'>
             <FormField 
-                className={'input'}
+                className={'input is-primary'}
                 type={'text'}
                 name={'name'}
                 placeholder={'name'}
@@ -41,7 +42,7 @@ function FiltersForm() {
                 onChange={handleFiltersForm}
             />
             <FormField 
-                className={'input'}
+                className={'input is-primary'}
                 type={'number'}
                 name={'minPrice'}
                 placeholder={'min price'}
@@ -49,7 +50,7 @@ function FiltersForm() {
                 onChange={handleFiltersForm}
             />
             <FormField 
-                className={'input'}
+                className={'input is-primary'}
                 type={'number'}
                 name={'maxPrice'}
                 placeholder={'max price'}
@@ -80,7 +81,11 @@ function FiltersForm() {
                 value={filters.tags}
                 onChange={handleFiltersForm}
             />
-        </div>
+            <Button 
+                className={'button is-primary is-rounded'} 
+                text={'Search'}
+            />
+        </form>
     );
 }
 
