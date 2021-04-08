@@ -12,7 +12,7 @@ function LoginForm({ onSubmit, isLoading }) {
         setCredentials(credentials => {
             return {
                 ...credentials,
-                [event.target.name]: event.target.name === 'remember' ? event.target.checked : event.target.value
+                [event.target.name]: event.target.type === 'remember' ? event.target.checked : event.target.value
             };
         });
     };
@@ -41,8 +41,9 @@ function LoginForm({ onSubmit, isLoading }) {
                 onChange={handleFormFieldChange}
             />
             <Checkbox 
-                className={'checkbox'}
+                className={'checkbox login-checkbox'}
                 name={'remember'}
+                type={'checkbox'}
                 text={'Remember me'}
                 disabled={!credentials.email || !credentials.password}
                 checked={credentials.remember}

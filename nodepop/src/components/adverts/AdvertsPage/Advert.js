@@ -17,7 +17,7 @@ function Advert({ name, price, sale, photo, tags }) {
                         <span className='advert-price'>{`Price: ${price}`}</span>
                         <span className='advert-sale'>{sale ? 'Sale' : 'Purchase'}</span>
                         <span className='advert-tags'>{`Tags: ${tags}`}</span>
-                        {photo && <img src={photo}/>}
+                        {photo && <img src={photo} alt=''/>}
                     </div>
                 </div>
             </div>

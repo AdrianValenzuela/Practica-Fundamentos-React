@@ -11,7 +11,7 @@
     width: 17%;
 }
 
-input[type=checkbox]
+.checkbox-filters input[type=checkbox]
 {
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */
@@ -22,7 +22,7 @@ input[type=checkbox]
   padding: 10px;
 }
 
-.checkbox
+.checkbox-filters
 {
   margin-top: 10px;
   font-size: 110%;

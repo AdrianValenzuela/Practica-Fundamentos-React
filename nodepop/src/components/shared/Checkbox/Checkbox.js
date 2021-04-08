@@ -3,7 +3,7 @@ import React from 'react';
 
 function Checkbox({ className, text, ...props }) {
 
-    const [name, disabled, checked, onChange] = Object.values({...props});
+    const [name, type, disabled, checked, onChange] = Object.values({...props});
 
     return (
         <label 
@@ -11,7 +11,7 @@ function Checkbox({ className, text, ...props }) {
             disabled={disabled}
         >
             <input 
-                type="checkbox"
+                type={type}
                 disabled={disabled}
                 name={name}
                 checked={checked}

@@ -2,10 +2,10 @@
 import React from 'react';
 
 // local imports
-import { FormField, Checkbox, Button } from '../../shared';
+import { FormField, Checkbox, Button, Select } from '../../shared';
 import './FiltersForm.css';
 
-function FiltersForm() {
+function FiltersForm({ tags }) {
 
     const initialFilters = {
         name: '',
@@ -22,11 +22,7 @@ function FiltersForm() {
             console.log(event.target.name);
             return {
                 ...filters,
-                [event.target.name]: event.target.name === 'sale' ? 
-                                        event.target.checked :
-                                     event.target.name === 'purchase' ?
-                                        event.target.checked :
-                                    event.target.value
+                [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
             };
         });
     }
@@ -58,29 +54,24 @@ function FiltersForm() {
                 onChange={handleFiltersForm}
             />
             <Checkbox
-                className={'checkbox'}
+                className={'checkbox checkbox-filters'}
                 name={'sale'}
+                type={'checkbox'}
                 text={'Sale'}
                 disabled={false}
                 checked={filters.sale}
                 onChange={handleFiltersForm}
             />
             <Checkbox
-                className={'checkbox'}
+                className={'checkbox checkbox-filters'}
                 name={'purchase'}
+                type={'checkbox'}
                 text={'Purchase'}
                 disabled={false}
                 checked={filters.purchase}
                 onChange={handleFiltersForm}
             />
-            <FormField 
-                className={'input'}
-                type={'text'}
-                name={'tags'}
-                placeholder={'tags'}
-                value={filters.tags}
-                onChange={handleFiltersForm}
-            />
+            <Select tags={tags}/>
             <Button 
                 className={'button is-primary is-rounded'} 
                 text={'Search'}
