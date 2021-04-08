@@ -5,30 +5,41 @@ import React from 'react';
 import { FormField, Checkbox, Button, Select } from '../../shared';
 import './FiltersForm.css';
 
-function FiltersForm({ tags }) {
+function FiltersForm({ initialFilters, tags, onSubmit }) {
 
-    const initialFilters = {
-        name: '',
-        minPrice: '',
-        maxPrice: '',
-        sale: false,
-        purchase: false,
-        tags: []
-    };
     const [filters, setFilters] = React.useState(initialFilters);
 
     const handleFiltersForm = event => {
+
+        let tagsValues = [];
+
+        if (event.target.name === 'tags') {
+            for (const option of event.target.options) {
+                if (option.selected) {
+                    tagsValues.push(option.value);
+                }
+            }
+        }
+
         setFilters(filters => {
-            console.log(event.target.name);
             return {
                 ...filters,
-                [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
+                [event.target.name]: event.target.type === 'checkbox' ? 
+                                     event.target.checked : 
+                                     event.target.name === 'tags' ?
+                                     tagsValues :
+                                     event.target.value
             };
         });
     }
 
+    const handleSubmitFilterForm = event => {
+        event.preventDefault();
+        onSubmit(filters);
+    };
+
     return (
-        <form className='filters'>
+        <form onSubmit={handleSubmitFilterForm} className='filters'>
             <FormField 
                 className={'input is-primary'}
                 type={'text'}
@@ -71,7 +82,13 @@ function FiltersForm({ tags }) {
                 checked={filters.purchase}
                 onChange={handleFiltersForm}
             />
-            <Select tags={tags}/>
+            <Select 
+                tags={tags}
+                name={'tags'}
+                multiple
+                // value={filters.tags}
+                onChange={handleFiltersForm}
+            />
             <Button 
                 className={'button is-primary is-rounded'} 
                 text={'Search'}

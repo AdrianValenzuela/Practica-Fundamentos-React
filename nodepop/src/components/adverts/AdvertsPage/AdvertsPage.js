@@ -22,22 +22,45 @@ function AdvertsPage({ ...props }) {
     const [adverts, setAdverts] = React.useState([]);
     const [tags, setTags] = React.useState([]);
 
-    React.useEffect(() => {
-        // pedimos los anuncios al back
-        advertsService.getAdverts().then(adverts => {
+    const initialFilters = {
+        name: '',
+        minPrice: null,
+        maxPrice: null,
+        sale: false,
+        purchase: false,
+        tags: []
+    };
+
+    const getAdverts = (filters) => {
+        return advertsService.getAdverts(filters).then(adverts => {
             // ordenamos de más nuevo a más viejo
             return adverts.sort((advert1, advert2) => {
                 return advert1.createdAt > advert2.createdAt ? -1 : 0;
             });
-        }).then(setAdverts);
+        })
+    }
 
-        // pedimos los tags al back
-        advertsService.getAdvertsTags().then(setTags);
-    }, []);
+    const handleSubmit = async filters => {
+        try {
+            // pedimos los anuncios al back con filtros formulario
+            await getAdverts(filters).then(setAdverts);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const filterProps = {
-        tags: tags
+        initialFilters: initialFilters,
+        tags: tags,
+        onSubmit: handleSubmit
     };
+
+    React.useEffect(() => {
+        // pedimos los anuncios al back con filtros iniciales
+        getAdverts(initialFilters).then(setAdverts);
+        // pedimos los tags al back
+        advertsService.getAdvertsTags().then(setTags);
+    }, []);    
 
     return (
         <div>
