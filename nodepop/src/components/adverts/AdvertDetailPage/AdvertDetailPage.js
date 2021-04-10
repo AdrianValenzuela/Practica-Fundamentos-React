@@ -1,11 +1,11 @@
 // libraries imports
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 // local imports
 import advertsService from '../../../api/adverts.js';
 import { Layout } from '../../layout';
-import { Button } from '../../shared';
+import { Button, Notification } from '../../shared';
 import './AdvertDetailPage.css';
 
 function AdvertDetailPage({ ...props }) {
@@ -37,6 +37,23 @@ function AdvertDetails({ advert }) {
 
     const defaultImage = 'https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png'
 
+    const [notification, setNotification] = React.useState(null);
+
+    const history = useHistory();
+
+    const handleDelete = () => {
+        setNotification('Are you sure?');
+    };
+
+    const handleConfirmDelete = () => {
+        setNotification(null);
+        advertsService.deleteAdvert(advert.id).then(history.push('/'));
+    }
+
+    const resetNotification = () => {
+        setNotification(null);
+    }
+
     return (
         <div className='details'>
             <h1 className='title'>{advert.name}</h1>
@@ -48,12 +65,14 @@ function AdvertDetails({ advert }) {
                     <span>{`Tags: ${advert.tags}`}</span>
                 </div>
             </div>
-            <div>
+            <div className='delete-button'>
                 <Button 
                     className={'button is-danger is-rounded'}
                     text={'Delete'}
+                    onClick={handleDelete}                    
                 />
-            </div>            
+            </div>
+            {notification && <Notification message={notification} onClick={resetNotification} onConfirmDelete={handleConfirmDelete} />}            
         </div>
     );
 }

@@ -22,7 +22,7 @@
     justify-content: space-between;
 }
 
-.details button {
+.delete-button button {
     width: 100px;
     position: fixed;
     right: 20px;
