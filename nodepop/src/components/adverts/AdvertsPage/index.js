@@ -1,1 +1,1 @@
-export { default } from './AdvertsPage.js'; 
+export { default } from './AdvertsPage.js';

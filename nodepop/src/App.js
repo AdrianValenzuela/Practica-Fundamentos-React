@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 // local imports
 import './App.css';
-import { AdvertsPage } from './components/adverts';
+import { AdvertsPage, AdvertDetailPage } from './components/adverts';
 import { LoginPage } from './components/auth';
 import { PageNotFound } from './components/layout';
 
@@ -22,14 +22,18 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
-        {/* <Route path='/advert/:id' component={}></Route> */}
-        {/* <Route path='/advert' component={}></Route> */}
+        <Route path='/advert/:id'>
+          {routeProps => <AdvertDetailPage isLogged={isLogged} onLogout={handleLogout} {...routeProps}/>}          
+        </Route>
+        {/* <Route path='/advert'>
+          {new advert}
+        </Route> */}
         <Route path='/login'>
           { isLogged ? <Redirect to='/' /> : <LoginPage onLogin={handleLogin} /> }
         </Route>
         <Route exact path='/'>
           <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
+        </Route>        
         <Route path='/404' component={PageNotFound}/>
         <Route>
           <Redirect to='/404' />

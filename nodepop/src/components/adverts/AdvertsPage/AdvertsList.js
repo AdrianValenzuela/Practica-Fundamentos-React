@@ -12,7 +12,7 @@ function AdvertsList({ adverts }) {
         <div className='adverts-list'>
             {adverts.map(advert => {
                 return (
-                    <Link to='/404'>
+                    <Link to={`/advert/${advert.id}`}>
                         <Advert {...advert} />
                     </Link>
                 );

@@ -67,7 +67,7 @@ function AdvertsPage({ ...props }) {
             <Layout {...props} >
                 <FiltersForm {...filterProps}/>
                 <div className='ads'>
-                    { adverts.length ? <AdvertsList adverts={adverts} />: <EmptyList /> }
+                    { adverts.length ? <AdvertsList adverts={adverts} /> : <EmptyList /> }
                 </div>                
             </Layout>
         </div>
