@@ -86,7 +86,6 @@ function FiltersForm({ initialFilters, tags, onSubmit }) {
                 tags={tags}
                 name={'tags'}
                 multiple
-                // value={filters.tags}
                 onChange={handleFiltersForm}
             />
             <Button 

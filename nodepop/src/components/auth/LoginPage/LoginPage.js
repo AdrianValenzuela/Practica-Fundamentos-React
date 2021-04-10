@@ -19,7 +19,7 @@ function LoginPage({ onLogin }) {
 
 
     const handleSubmit = async credentials => {
-        resetError(null);
+        resetError();
         setIsLoading(true);
         try {            
             await authService.login(credentials);

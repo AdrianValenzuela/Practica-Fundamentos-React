@@ -1,5 +1,6 @@
 // libraries imports
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // local imports
 import advertsService from '../../../api/adverts.js'; 
@@ -12,7 +13,9 @@ function EmptyList() {
     return (
         <div>
             <p>Be the first seller!</p>
-            <Button className={'button is-primary is-rounded'} text={'New Advert'} />
+            <Link to='/advert'>
+                <Button className={'button is-primary is-rounded'} text={'New Advert'} />
+            </Link>            
         </div>
     );
 }
