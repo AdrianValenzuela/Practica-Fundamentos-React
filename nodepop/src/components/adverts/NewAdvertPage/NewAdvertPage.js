@@ -34,7 +34,7 @@ function NewAdvertPage({ isLogged, onLogout }) {
             data.append("tags", newAdvert.tags);
             
             if (photo.length) {
-                data.append("photo", new Blob([photo], {type: 'multipart/form-data' }));
+                data.append("photo", new Blob([photo[0]], {type: 'multipart/form-data' }));
             }
 
             await advertsService.createAdvert(data);
