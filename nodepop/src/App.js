@@ -22,19 +22,24 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
+        <Route path='/adverts'>
+          <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route exact path='/advert/new'>
+          <NewAdvertPage isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
         <Route path='/advert/:id'>
           {routeProps => <AdvertDetailPage isLogged={isLogged} onLogout={handleLogout} {...routeProps}/>}          
-        </Route>
-        <Route path='/advert'>
-          <NewAdvertPage isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route path='/login'>
           { isLogged ? <Redirect to='/' /> : <LoginPage onLogin={handleLogin} /> }
         </Route>
         <Route exact path='/'>
-          <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
+          <Redirect to='/adverts' />
         </Route>        
-        <Route path='/404' component={PageNotFound}/>
+        <Route path='/404'>
+          <PageNotFound isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
         <Route>
           <Redirect to='/404' />
         </Route>

@@ -37,8 +37,8 @@ function NewAdvertPage({ isLogged, onLogout }) {
                 data.append("photo", new Blob([photo[0]], {type: 'multipart/form-data' }));
             }
 
-            await advertsService.createAdvert(data);
-            history.push('/');
+            const response = await advertsService.createAdvert(data);
+            history.push(`/advert/${response.id}`);
         } catch (error) {
             setError(error.message);
         }

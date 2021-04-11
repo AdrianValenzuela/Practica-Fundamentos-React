@@ -17,7 +17,7 @@ function Header({ isLogged, onLogout }) {
                 </div>
             </Link>
             <nav>
-                <Link to='/advert'>
+                <Link to='/advert/new'>
                     <Button className={'button is-primary is-rounded'} text={'New Advert'} />
                 </Link>
                 <AuthButton isLogged={isLogged} onLogout={onLogout}/>

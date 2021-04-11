@@ -80,7 +80,8 @@ function NewAdvertForm({ tags, onSubmit }) {
             <input name='photo' type='file' ref={photo} />
             <Button
                 className={'button is-primary is-rounded'}
-                text={'New Advert'} 
+                text={'New Advert'}
+                disabled={!newAdvert.name || !newAdvert.price ||!newAdvert.tags.length}
             />
         </form>
     );

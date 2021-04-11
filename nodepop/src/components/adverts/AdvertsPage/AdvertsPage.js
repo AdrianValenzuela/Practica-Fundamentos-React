@@ -13,7 +13,7 @@ function EmptyList() {
     return (
         <div>
             <p>Be the first seller!</p>
-            <Link to='/advert'>
+            <Link to='/advert/new'>
                 <Button className={'button is-primary is-rounded'} text={'New Advert'} />
             </Link>            
         </div>
