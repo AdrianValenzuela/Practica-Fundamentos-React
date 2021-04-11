@@ -56,9 +56,9 @@ function AdvertDetails({ advert }) {
 
     return (
         <div className='details'>
-            <h1 className='title'>{advert.name}</h1>
+            <span className='title'>{advert.name}</span>
             <div className='advert-details'>
-                <img className='advert-image' src={advert.photo ? advert.photo : defaultImage} alt={advert.name} />
+                <img className='advert-image' src={advert.photo ? `http://localhost:3001${advert.photo}` : defaultImage} />
                 <div className='advert'>
                     <span>{`Price: ${advert.price}`}</span>
                     <span>{`Status: ${advert.sale ? 'Sale' : 'Purchase'}`}</span>
