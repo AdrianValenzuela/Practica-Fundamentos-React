@@ -5,7 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 // local imports
 import './App.css';
 import { AdvertsPage, AdvertDetailPage, NewAdvertPage } from './components/adverts';
-import { LoginPage } from './components/auth';
+import { LoginPage, PrivateRoute } from './components/auth';
 import { PageNotFound } from './components/layout';
 
 function App({ isInitiallyLogged }) {
@@ -22,15 +22,15 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
-        <Route path='/adverts'>
+        <PrivateRoute isLogged={isLogged} path='/adverts'>
           <AdvertsPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
-        <Route exact path='/advert/new'>
+        </PrivateRoute>
+        <PrivateRoute isLogged={isLogged} exact path='/advert/new'>
           <NewAdvertPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
-        <Route path='/advert/:id'>
+        </PrivateRoute>
+        <PrivateRoute isLogged={isLogged} path='/advert/:id'>
           {routeProps => <AdvertDetailPage isLogged={isLogged} onLogout={handleLogout} {...routeProps}/>}          
-        </Route>
+        </PrivateRoute>
         <Route path='/login'>
           { isLogged ? <Redirect to='/' /> : <LoginPage onLogin={handleLogin} /> }
         </Route>
